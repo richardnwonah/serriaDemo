@@ -1,4 +1,3 @@
-
 <!-- product.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+      background: linear-gradient(145deg, #f0f9ff, #bae6fd, #ffffff);
       color: #1e3a8a;
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
@@ -19,56 +18,60 @@
       padding: 20px;
     }
     .container {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
-      max-width: 800px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 3rem;
+      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.25), 0 0 20px rgba(59, 130, 246, 0.2);
+      max-width: 850px;
       width: 100%;
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      animation: fadeIn 1s ease-in-out;
+      border: 2px solid rgba(59, 130, 246, 0.4);
+      animation: float 3s ease-in-out infinite;
     }
     .glow-input {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid #3b82f6;
-      border-radius: 12px;
-      padding: 0.75rem;
+      border-radius: 15px;
+      padding: 0.85rem;
       color: #1e3a8a;
-      transition: all 0.4s ease;
+      transition: all 0.5s ease;
+      box-shadow: 0 2px 5px rgba(59, 130, 246, 2);
     }
     .glow-input:focus {
       border-color: #60a5fa;
-      box-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+      box-shadow: 0 0 15px rgba(96, 165, 250, 0.7), 0 0 25px rgba(59, 130, 246, 0.3);
       outline: none;
     }
     .glow-btn {
-      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      background: linear-gradient(45deg, #3b82f6, #60a5fa, #93c5fd);
       color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
+      padding: 0.85rem 2rem;
+      border-radius: 15px;
       border: none;
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.5s ease;
       font-weight: 600;
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
     }
     .glow-btn:hover {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
-      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.8), 0 5px 20px rgba(59, 130, 246, 0.5);
+      transform: translateY(-5px) scale(1.02);
     }
     h1 {
       text-align: center;
       color: #1e3a8a;
-      text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-      margin-bottom: 2rem;
-      animation: slideIn 0.8s ease-out;
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+      margin-bottom: 2.5rem;
+      font-size: 2.5rem;
+      animation: pulseText 2s infinite;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
+    @keyframes pulseText {
+      0% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+      50% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+      100% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
     }
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
   </style>
@@ -77,13 +80,13 @@
   <div class="container">
     <h1>Serria - New Campaign</h1>
     <div>
-      <h2 class="text-xl font-semibold mb-2">Product Details</h2>
-      <input type="text" id="productName" class="glow-input w-full mb-2" placeholder="Product Name">
-      <textarea id="productDesc" class="glow-input w-full mb-2" placeholder="Product Description" rows="3"></textarea>
-      <input type="text" id="targetAudience" class="glow-input w-full mb-2" placeholder="Target Audience (e.g., Young adults, 18-25)">
-      <input type="text" id="keyFeatures" class="glow-input w-full mb-2" placeholder="Key Features (comma-separated)">
+      <h2 class="text-xl font-semibold mb-3 text-center">Product Details</h2>
+      <input type="text" id="productName" class="glow-input w-full mb-3" placeholder="Product Name">
+      <textarea id="productDesc" class="glow-input w-full mb-3" placeholder="Product Description" rows="3"></textarea>
+      <input type="text" id="targetAudience" class="glow-input w-full mb-3" placeholder="Target Audience (e.g., Young adults, 18-25)">
+      <input type="text" id="keyFeatures" class="glow-input w-full mb-3" placeholder="Key Features (comma-separated)">
       <button onclick="generateMessage()" class="glow-btn w-full">Generate Marketing Message</button>
-      <button onclick="window.location.href='dashboard.html'" class="glow-btn w-full mt-2">Back to Dashboard</button>
+      <button onclick="window.location.href='dashboard.html'" class="glow-btn w-full mt-3">Back to Dashboard</button>
     </div>
   </div>
 
@@ -97,7 +100,7 @@
         const message = {
           subject: `Discover ${productName} - Perfect for You!`,
           body: `
-            Hey there, ${targetAudience.split(',')[0]}!<br><br>
+            Hey there, Ebun!<br><br>
             Introducing <b>${productName}</b>: ${productDesc}<br><br>
             Why you'll love it:<br>
             <ul>
@@ -106,7 +109,7 @@
             <br>Ready to revolutionize your experience? Grab ${productName} today!<br>
             Cheers,<br>Serria Team
           `,
-          speech: `Hey there, ${targetAudience.split(',')[0]}! Introducing ${productName}: ${productDesc}. Why you'll love it: ${keyFeatures.join(', ')}. Ready to revolutionize your experience? Grab ${productName} today! Cheers, Serria Team`
+          speech: `Hey there, Ebun! Introducing ${productName}: ${productDesc}. Why you'll love it: ${keyFeatures.join(', ')}. Ready to revolutionize your experience? Grab ${productName} today! Cheers, Serria Team`
         };
         localStorage.setItem('generatedMessage', JSON.stringify(message));
         window.location.href = 'message.html';
