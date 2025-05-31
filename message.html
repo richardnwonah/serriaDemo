@@ -1,0 +1,114 @@
+<!-- message.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serria - Marketing Message</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+      color: #1e3a8a;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+      max-width: 800px;
+      width: 100%;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+    .output-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .glow-btn {
+      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-weight: 600;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+      transform: translateY(-3px);
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+      margin-bottom: 2rem;
+      animation: slideIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Serria - Marketing Message</h1>
+    <div>
+      <h2 class="text-xl font-semibold mb-2">Simulated Marketing Message</h2>
+      <div id="generatedMessage" class="output-box"></div>
+      <button onclick="playMessage()" class="glow-btn w-full mt-2">Play Demo Message</button>
+      <button onclick="scrapeContacts()" class="glow-btn w-full mt-2">Scrape Contacts & Simulate Send</button>
+      <button onclick="window.location.href='dashboard.html'" class="glow-btn w-full mt-2">Back to Dashboard</button>
+    </div>
+  </div>
+
+  <script>
+    const message = JSON.parse(localStorage.getItem('generatedMessage') || '{}');
+    const generatedMessage = document.getElementById('generatedMessage');
+    if (message.subject && message.body) {
+      generatedMessage.innerHTML = `Subject: ${message.subject}<br><br>${message.body}`;
+    } else {
+      generatedMessage.innerHTML = 'Error: No message generated. Return to the campaign page.';
+    }
+
+    function playMessage() {
+      if (message.speech) {
+        const utterance = new SpeechSynthesisUtterance(message.speech);
+        utterance.rate = 1.0;
+        utterance.pitch = 1.2;
+        utterance.volume = 0.9;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('No speech content available. Regenerate the message.');
+      }
+    }
+
+    function scrapeContacts() {
+      localStorage.setItem('contacts', JSON.stringify([
+        { email: 'john.doe@example.com', phone: '+1-555-123-4567' },
+        { email: 'jane.smith@example.com', phone: '+1-555-987-6543' },
+        { email: 'alex.brown@example.com', phone: '+1-555-456-7890' }
+      ]));
+      window.location.href = 'results.html';
+    }
+  </script>
+</body>
+</html>

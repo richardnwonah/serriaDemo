@@ -1,0 +1,119 @@
+
+<!-- product.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serria - New Campaign</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+      color: #1e3a8a;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+      max-width: 800px;
+      width: 100%;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+    .glow-input {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #3b82f6;
+      border-radius: 12px;
+      padding: 0.75rem;
+      color: #1e3a8a;
+      transition: all 0.4s ease;
+    }
+    .glow-input:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+      outline: none;
+    }
+    .glow-btn {
+      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-weight: 600;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+      transform: translateY(-3px);
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+      margin-bottom: 2rem;
+      animation: slideIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Serria - New Campaign</h1>
+    <div>
+      <h2 class="text-xl font-semibold mb-2">Product Details</h2>
+      <input type="text" id="productName" class="glow-input w-full mb-2" placeholder="Product Name">
+      <textarea id="productDesc" class="glow-input w-full mb-2" placeholder="Product Description" rows="3"></textarea>
+      <input type="text" id="targetAudience" class="glow-input w-full mb-2" placeholder="Target Audience (e.g., Young adults, 18-25)">
+      <input type="text" id="keyFeatures" class="glow-input w-full mb-2" placeholder="Key Features (comma-separated)">
+      <button onclick="generateMessage()" class="glow-btn w-full">Generate Marketing Message</button>
+      <button onclick="window.location.href='dashboard.html'" class="glow-btn w-full mt-2">Back to Dashboard</button>
+    </div>
+  </div>
+
+  <script>
+    function generateMessage() {
+      const productName = document.getElementById('productName').value;
+      const productDesc = document.getElementById('productDesc').value;
+      const targetAudience = document.getElementById('targetAudience').value;
+      const keyFeatures = document.getElementById('keyFeatures').value.split(',').map(f => f.trim());
+      if (productName && productDesc && targetAudience && keyFeatures.length > 0) {
+        const message = {
+          subject: `Discover ${productName} - Perfect for You!`,
+          body: `
+            Hey there, ${targetAudience.split(',')[0]}!<br><br>
+            Introducing <b>${productName}</b>: ${productDesc}<br><br>
+            Why you'll love it:<br>
+            <ul>
+              ${keyFeatures.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+            <br>Ready to revolutionize your experience? Grab ${productName} today!<br>
+            Cheers,<br>Serria Team
+          `,
+          speech: `Hey there, ${targetAudience.split(',')[0]}! Introducing ${productName}: ${productDesc}. Why you'll love it: ${keyFeatures.join(', ')}. Ready to revolutionize your experience? Grab ${productName} today! Cheers, Serria Team`
+        };
+        localStorage.setItem('generatedMessage', JSON.stringify(message));
+        window.location.href = 'message.html';
+      } else {
+        alert('Error: Please fill in all fields.');
+      }
+    }
+  </script>
+</body>
+</html>

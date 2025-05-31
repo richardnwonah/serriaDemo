@@ -1,0 +1,104 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serria - Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+      color: #1e3a8a;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+    .glow-input {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #3b82f6;
+      border-radius: 12px;
+      padding: 0.75rem;
+      color: #1e3a8a;
+      transition: all 0.4s ease;
+    }
+    .glow-input:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+      outline: none;
+    }
+    .glow-btn {
+      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-weight: 600;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+      transform: translateY(-3px);
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+      margin-bottom: 2rem;
+      animation: slideIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Serria</h1>
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold mb-2 animate-slideIn">Login</h2>
+      <input type="text" id="username" class="glow-input w-full mb-2" placeholder="Username">
+      <input type="password" id="password" class="glow-input w-full mb-2" placeholder="Password">
+      <button onclick="login()" class="glow-btn w-full">Login</button>
+      <p id="loginStatus" class="text-sm mt-2"></p>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const status = document.getElementById('loginStatus');
+      if (username === 'Ebun' && password === 'TheEbunX200S') {
+        status.textContent = 'Login successful! Redirecting...';
+        status.classList.add('text-blue-600');
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 1000);
+      } else {
+        status.textContent = 'Invalid username or password.';
+        status.classList.add('text-red-500');
+      }
+    }
+  </script>
+</body>
+</html>

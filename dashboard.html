@@ -1,0 +1,130 @@
+
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serria - Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+      color: #1e3a8a;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+      max-width: 1200px;
+      width: 100%;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      margin: 0 auto;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .glow-btn {
+      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-weight: 600;
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+      transform: translateY(-3px);
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+      text-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+      margin-bottom: 2rem;
+      animation: slideIn 0.8s ease-out;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+      transform: translateY(-5px);
+    }
+    .stat-box {
+      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      color: #ffffff;
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      animation: pulse 2s infinite;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Serria Dashboard</h1>
+    <p class="text-center mb-6 text-lg">Welcome, Ebun!</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div class="stat-box">
+        <h3 class="text-lg font-semibold">Campaigns</h3>
+        <p class="text-3xl font-bold">3</p>
+        <p class="text-sm">Active campaigns</p>
+      </div>
+      <div class="stat-box">
+        <h3 class="text-lg font-semibold">Reach</h3>
+        <p class="text-3xl font-bold">1,250</p>
+        <p class="text-sm">Contacts targeted</p>
+      </div>
+      <div class="stat-box">
+        <h3 class="text-lg font-semibold">Success</h3>
+        <p class="text-3xl font-bold">85%</p>
+        <p class="text-sm">Delivery rate</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-2">Create Campaign</h2>
+        <p class="mb-4">Launch a new marketing campaign for your product with AI-generated messages.</p>
+        <button onclick="window.location.href='product.html'" class="glow-btn w-full">New Campaign</button>
+      </div>
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-2">View Results</h2>
+        <p class="mb-4">Analyze the performance of your outreach simulations and campaigns.</p>
+        <button onclick="window.location.href='results.html'" class="glow-btn w-full">View Results</button>
+      </div>
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-2">Analytics</h2>
+        <p class="mb-4">Dive into detailed metrics and insights for your marketing efforts.</p>
+        <button onclick="alert('Analytics coming soon!')" class="glow-btn w-full">View Analytics</button>
+      </div>
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-2">Settings</h2>
+        <p class="mb-4">Customize your campaign preferences and AI behavior.</p>
+        <button onclick="alert('Settings coming soon!')" class="glow-btn w-full">Adjust Settings</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
